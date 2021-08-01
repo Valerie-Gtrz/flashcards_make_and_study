@@ -1,7 +1,7 @@
 function Home() {
   return (
     <div>
-      <button type="button" name="create" className="btn btn-secondary btn-lg mb-2">&#43; Create Deck</button>
+      <button type="button" name="create" className="btn btn-secondary mb-2">&#43; Create Deck</button>
       <div className="card" >
       <div class="card-body">
               <div className="d-flex"><h2 className="card-title">Deck Title</h2> <p className="ml-auto">3 cards</p> </div>
