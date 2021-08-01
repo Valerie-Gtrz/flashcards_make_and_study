@@ -4,7 +4,7 @@ function Home() {
       <button type="button" name="create" className="btn btn-secondary btn-lg mb-2">&#43; Create Deck</button>
       <div className="card" >
       <div class="card-body">
-              <div className="d-flex"><h2 className="card-title">Deck Title</h2> <p>3 cards</p> </div>
+              <div className="d-flex"><h2 className="card-title">Deck Title</h2> <p className="ml-auto">3 cards</p> </div>
               <p className="card-text">some text here</p>
               <div className="d-flex flex-row">
             <button type="button" name="view" className="btn btn-secondary mr-2">
@@ -34,7 +34,7 @@ function Home() {
               </svg>{" "}
               Study
             </button>
-            <div className="ms-auto">
+            <div className="ml-auto">
             <button type="button" name="delete" className="btn btn-danger">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
