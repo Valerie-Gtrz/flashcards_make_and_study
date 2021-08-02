@@ -1,8 +1,8 @@
-import DeckHome from "./DeckHome";
+import HomeCard from "./HomeCard";
 
 function Home() {
   return (
-   <DeckHome />
+   <HomeCard />
   );
 }
 

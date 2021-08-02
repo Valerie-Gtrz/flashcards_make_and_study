@@ -1,4 +1,4 @@
-import StudyBtn from "./StudyBtn";
+import StudyBtn from "./Study/StudyBtn";
 import ViewBtn from "./ViewBtn";
 import DeleteBtn from "./DeleteBtn";
 
@@ -9,7 +9,7 @@ function HomeCard(){
           &#43; Create Deck
         </button>
         <div className="card">
-          <div class="card-body py-3">
+          <div className="card-body py-3">
             <div className="d-flex">
               <h2 className="card-title">Deck Title</h2>{" "}
               <p className="ml-auto"># cards</p>{" "}
