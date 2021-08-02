@@ -43,7 +43,7 @@ function DeleteBtn() {
         className="btn btn-danger"
         onClick={deleteHandler}
       >
-        <span class="oi oi-trash"></span>
+        <span className="oi oi-trash"></span>
       </button>
     </div>
   );
