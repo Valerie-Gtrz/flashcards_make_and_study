@@ -17,7 +17,7 @@ function Layout() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path=":deckId/study">
+          <Route path="/decks/:deckId">
             <StudyScreen />
           </Route>
           <NotFound />
