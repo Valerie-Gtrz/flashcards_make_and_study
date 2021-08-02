@@ -14,7 +14,7 @@ function StudyBtn() {
   return (
     
     <div>
-      <Link to='/study'>
+      <Link to='/:deckId/study'>
       <button 
       type="button" 
       name="study" 

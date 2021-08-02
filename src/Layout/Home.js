@@ -1,8 +1,13 @@
-import HomeCard from "./HomeCard";
+import HomeCard from "./DeckList";
 
 function Home() {
   return (
-   <HomeCard />
+    <>
+    <button type="button" name="create" className="btn btn-secondary my-2">
+        + Create Deck
+      </button>
+  <HomeCard />
+  </>
   );
 }
 

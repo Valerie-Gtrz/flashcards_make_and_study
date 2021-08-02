@@ -1,7 +1,10 @@
-function DeleteBtn(){
+import { deleteDeck } from "../utils/api/index";
+import { useHistory } from "react-router-dom";
 
+function DeleteBtn() {
+  const history = useHistory();
   // export const deleteCard = ({ mapped cards in deck }) => {
-  //   const { id } = useParams(); 
+  //   const { id } = useParams();
   //   const history = useHistory();
   //   const cards = mapped cards in deck.find((card) => card.id === {id}));
   // const handleDelete = async (id) => {
@@ -12,13 +15,34 @@ function DeleteBtn(){
   //   }
   // };
 
-    return(
-        <div className="ml-auto">
-        <button 
-        type="button" 
-        name="delete" 
-        className="btn btn-danger"
-        >
+  async function deleteHandler({ target }) {
+    const id = target.id;
+    const abortController = new AbortController();
+    if (
+        window.confirm("Delete this deck?\n\nYou will not be able to recover it.")
+    ) {
+        try {
+            await deleteDeck(id, abortController.signal);
+            history.push("/");
+        } catch (error) {
+            if (error.name === "AbortError") {
+                console.log("ViewDeck Delete Aborted")
+            } else {
+                console.log(error);
+            }
+        }
+        return () => abortController.abort();
+    }
+}
+
+  return (
+    <div className="ml-auto">
+      <button 
+      type="button" 
+      name="delete" 
+      className="btn btn-danger"
+      onClick={deleteHandler}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -35,7 +59,9 @@ function DeleteBtn(){
         </svg>
       </button>
     </div>
-    );
+  );
 }
 
+
 export default DeleteBtn;
+
