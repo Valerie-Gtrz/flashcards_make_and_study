@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { createCard, readDeck } from "../utils/api"
-import CardForm from "./Cardform"
+import CardForm from "./CardForm"
 
 function CardCreate() {
     const history = useHistory();
@@ -35,12 +35,14 @@ function CardCreate() {
                 </li>
                 </ol>
             </nav>
+            <h2>{deck.name}: <span>Add Card</span></h2>
             <CardForm
                 deckName={deck.name}
                 initialState={deck}
                 onSubmit={submitHandler}
                 onDone={doneHandler}
             />
+            
         </>
     )
 }

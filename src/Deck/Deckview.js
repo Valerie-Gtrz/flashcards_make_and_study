@@ -7,6 +7,7 @@ function DeckView() {
 
     const { deckId } = useParams();
     const [deck, setDeck] = useState({ cards: [] });
+    
     useEffect(loadDeck, [deckId]);
 
     function loadDeck() {
@@ -48,7 +49,7 @@ function DeckView() {
             </nav>
             <div className="media mb-2">
                 <div className="media-body">
-                    <h5 className="mt-0">{deck.name}</h5>
+                    <h5 className="mt-0"><h2>{deck.name}</h2></h5>
                     {deck.description}
                 </div>
             </div>

@@ -12,6 +12,7 @@ function DeckEdit() {
     useEffect(() => {
         readDeck(deckId).then(setDeck);
     }, [deckId]);
+    
     function submitHandler(updatedDeck) {
         updateDeck(updatedDeck).then((savedDeck) =>
           history.push(`/decks/${savedDeck.id}`)

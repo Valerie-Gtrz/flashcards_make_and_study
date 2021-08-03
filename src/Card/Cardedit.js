@@ -1,29 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { updateCard } from "../utils/api";
-import CardForm from "./Cardform";
+import { readCard, updateCard, readDeck } from "../utils/api";
+import CardForm from "./CardForm";
 
-function CardEdit() {
+function CardEdit({  doneHandler, deckName }) {
   const history = useHistory();
-  const { cardId } = useParams();
+  const { cardId, deckId} = useParams();
+  const [deck, setDeck] = useState({});
 
-  const [card, setCard] = useState({ name: "", description: "" }); // intial state will be what is currently on the card
+  const [card, setCard] = useState({}); // intial state will be what is currently on the card
   useEffect(() => {
-    updateCard(cardId).then(setCard);
+    readCard(cardId).then(setCard)
+    loadDeck();
   }, [cardId]);
 
-  function submitHandler(updatedCard) {
-    updateCard(updatedCard).then((savedCard) =>
-      history.push(`/cards/${savedCard.id}`)
-    );
+  function loadDeck() {
+    readDeck(deckId).then(setDeck);
 }
 
-  function cancel() {
-    history.goBack();
+  function submitHandler(updatedCard) {
+    updateCard(updatedCard).then(() =>
+      history.push(`/decks/${deckId}`)
+    );
   }
 
+  const changeHandler = ({ target }) => {
+    setCard({
+      ...card,
+      [target.id]: target.value,
+    });
+  };
+
+  function doneHandler() {
+    history.push(`/decks/${deckId}`);
+}
+
   const child = card.id ? (
-    <CardForm onCancel={cancel} onSubmit={submitHandler} initialState={card} />
+    <CardForm
+      onChange={changeHandler}
+      onSubmit={submitHandler}
+      onDone={doneHandler}
+      deckName={deckName}
+      initialState={card}
+      doneButtonLabel="Cancel"
+      saveButtonLabel="Submit"
+    />
   ) : (
     <p>Loading...</p>
   );
@@ -38,10 +59,10 @@ function CardEdit() {
             </Link>
           </li>
           <li className="breadcrumb-item">
-            <Link to={`/cards/${card.id}`}>{card.name}</Link>
+            <Link to={`/decks/${deck.id}`}>{deck.name}</Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            Edit Card
+            Edit Card {cardId}
           </li>
         </ol>
       </nav>

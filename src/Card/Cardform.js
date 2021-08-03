@@ -6,6 +6,7 @@ function CardForm({
   deckName = "Loading...",
   initialState,
   doneButtonLabel = "Done",
+  saveButtonLabel = "Save"
 }) {
     const [card, setCard] = useState(initialState);
     // changeHandler here 
@@ -25,8 +26,6 @@ function CardForm({
     return (
         <form onSubmit={submitHandler} className="card-form">
             <fieldset>
-            <legend>{deckName}: Add Card</legend>
-    
             <div className="form-group">
                 <label htmlFor="front">Front</label>
                 <textarea
@@ -62,7 +61,7 @@ function CardForm({
                 {doneButtonLabel}
             </button>
             <button type="submit" className="btn btn-primary" tabIndex="3">
-                Save
+                {saveButtonLabel}
             </button>
             </fieldset>
         </form>

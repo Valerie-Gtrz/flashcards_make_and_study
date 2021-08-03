@@ -9,27 +9,29 @@ function CardList({ deck, onCardDelete }) {
           key={card.id}
           className="list-group-item list-group-item-action flex-column align-items-start"
         >
-            <div className="row">
-                <div className="col-md-10">
+            <div>
                     <div className="row">
-                        <div className="col">{card.front}</div>
-                        <div className="col">{card.back}</div>
+                        <div className="col mb-2">{card.front}</div>
+                        <div className="col mb-2">{card.back}</div>
                     </div>
-                </div>
-                <div className="col text-right">
+                <div className="d-flex justify-content-end">
+                <div className="row">
                     <Link
                         to={`/decks/${deck.id}/cards/${card.id}/edit`}
-                        className="btn btn-secondary mr-2"
+                        className="btn btn-secondary m-1"
                         title="Edit Card"
                     >
                         <span className="oi oi-pencil" /> Edit
                     </Link>
-                    <button className="btn btn-danger" title="Delete Card">
+                    <div className="m-1">
+                    <button className="btn btn-danger " title="Delete Card">
                         <span
                         className="oi oi-trash"
                         onClick={() => onCardDelete(card.id)}
                         />
                     </button>
+                    </div>
+                </div>
                 </div>
             </div>
         </li>
