@@ -1,14 +1,19 @@
 {
   "decks": [
     {
-      "name": "This is a new deck",
-      "description": "I made dis.",
+      "name": "Route Parameters",
+      "description": "How and when to use them!",
       "id": 3
     },
     {
       "name": "React Hooks",
       "description": "Hook it up!",
       "id": 4
+    },
+    {
+      "name": "Conditional Rendering",
+      "description": "All about conditional rendering in React.",
+      "id": 5
     }
   ],
   "cards": [
@@ -28,23 +33,37 @@
     },
     {
       "cards": [],
-      "front": "second card",
-      "back": "this is the back",
+      "front": "How would you import the useParams() hook?",
+      "back": "import { useParams } from \"react-router-dom\";",
       "deckId": 3,
       "id": 10
     },
     {
       "cards": [],
-      "front": "f",
-      "back": "b",
+      "front": "Rewrite this url to use parameter tokens: \nhttps://localhost:3000/user/42/post/17",
+      "back": "https://localhost:3000/user/:userId/post/:postId",
       "deckId": 3,
       "id": 11
     },
     {
-      "front": "f",
-      "back": "b",
+      "front": "How would you get the user id from this address using the useParams() hook?\nhttps://localhost:3000/user/:userId/post/:postId",
+      "back": "  const { userId } = useParams();",
       "deckId": 3,
       "id": 12
+    },
+    {
+      "cards": [],
+      "front": "hey im adding cards now!",
+      "back": "back",
+      "deckId": 4,
+      "id": 13
+    },
+    {
+      "cards": [],
+      "front": "What would be the best way to write a conditional in the middle of a render?\na. if statement\nb. ternary operator without braces\nc. {ternary operator} with braces",
+      "back": "c",
+      "deckId": 5,
+      "id": 14
     }
   ]
 }

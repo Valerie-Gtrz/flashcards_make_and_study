@@ -10,8 +10,8 @@ import Header from "./Header";
 
 import DeckEdit from "../Deck/Deckedit";
 import DeckView from "../Deck/Deckview";
-import CardEdit from "../Card/Cardedit"
-import CardCreate from "../Card/Cardcreate"
+import CardEdit from "../Card/CardEdit"
+import CardCreate from "../Card/CardCreate"
 import DeckCreate from "../Deck/Deckcreate"
 
 

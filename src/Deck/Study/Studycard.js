@@ -4,11 +4,9 @@ function StudyCard({
   currentCard,
   cards,
   nextCard,
-  index
+  index,
 }) {
-  console.log("deck",deck); //test
-  console.log("current",currentCard); //test
-
+    //the user should be able to click next regardless of whether they have flipped or not. what if they dont want to study that card right now??
   if (cards.length <= 1) {
     //change to if deck.cards.length <= 1
     return (
@@ -33,7 +31,6 @@ function StudyCard({
       </div>
     );
   } else {
-      (console.log(">>>",cards, currentCard))
     return (
       <div className="card p-3">
         <div>
@@ -41,7 +38,7 @@ function StudyCard({
             Card {index} of {cards.length}
           </h3>
           <p className="card-text mb-3">
-          {!flipped ? cards[currentCard].front : cards[currentCard].back}
+            {!flipped ? cards[currentCard].front : cards[currentCard].back}
           </p>
         </div>
         <div>
@@ -51,7 +48,8 @@ function StudyCard({
             tabIndex="4"
           >
             Flip
-          </button>
+            </button>
+         {flipped && ( 
           <button
             type="submit"
             className="btn btn-primary"
@@ -59,11 +57,12 @@ function StudyCard({
             onClick={nextCard}
           >
             Next
-          </button>
+          </button>)}
         </div>
       </div>
     );
   }
+  return;
 }
 
 export default StudyCard;

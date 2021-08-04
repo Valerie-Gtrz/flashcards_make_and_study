@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { listCards, readDeck, readCard } from "../../utils/api";
 import { useHistory, useParams, Link } from "react-router-dom";
 import StudyCard from "./Studycard";
+import StudynotEnough from "./StudyNotEnough";
 
 function Study() {
   const [deck, setDeck] = useState({});
@@ -31,7 +32,7 @@ function Study() {
     const deckLength = deck.cards.length;
     if (currentCard + 2 <= deckLength) {
       setCurrentCard(currentCard + 1);
-      setFlipped(true);
+      setFlipped(false);
     } else {
       if (
         window.confirm(
@@ -41,7 +42,7 @@ function Study() {
         //go back to first card
         setCurrentCard(0);
         //make sure front is showing
-        setFlipped(true);
+        setFlipped(false);
       } else {
         //if cancel is pressed go to home
         history.push("/");
@@ -72,8 +73,8 @@ function Study() {
           </li>
         </ol>
       </nav>
-      <h1>Study: {deck.name}</h1>
-      {cards.length > 0 && (
+      <h1> {deck.name}: Study</h1>
+      {cards.length >= 3 ? (
         <StudyCard
           flipHandler={flipHandler}
           flipped={flipped}
@@ -83,6 +84,8 @@ function Study() {
           currentCard={currentCard}
           index={currentCard + 1}
         />
+      ) : (
+        <StudynotEnough deck={deck} cards={cards} />
       )}
     </>
   );
