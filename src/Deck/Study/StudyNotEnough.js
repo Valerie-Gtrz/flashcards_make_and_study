@@ -10,7 +10,7 @@ function StudynotEnough({cards, deck}) {
     <div className="NotFound">
             <h2>Not enough cards.</h2>
           <p className="addmore">
-          You need at least 3 cards to study. There is/are {cards.length} card(s) in this deck.
+          You need at least 3 cards to study. There is/are {deck.cards.length} card(s) in this deck.
           </p>
           <Link
                 to={`/decks/${deck.id}/cards/new`}

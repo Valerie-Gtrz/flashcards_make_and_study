@@ -1,12 +1,10 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import Home from "../Home/Index";
+import Home from "../Home/Home";
 import Study from "../Deck/Study/Study";
 import NotFound from "./NotFound";
 import Header from "./Header";
-// import Home from "./Home";
-// import StudyScreen from "./StudyScreen";
 
 import DeckEdit from "../Deck/Deckedit";
 import DeckView from "../Deck/Deckview";
@@ -17,9 +15,6 @@ import DeckCreate from "../Deck/Deckcreate"
 
 function Layout() {
   
-  {
-    /* TODO: Implement the screen starting here */
-  }
   return (
     <div>
       <Header />
@@ -49,9 +44,6 @@ function Layout() {
           <Route exact path="/">
             <Home />
           </Route>
-          {/* <Route path="/deck/1/cards">
-            <StudyScreen />
-          </Route> */}
           <Route>
             <NotFound />
           </Route>

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { listCards, readDeck, readCard } from "../../utils/api";
+import { readDeck } from "../../utils/api";
 import { useHistory, useParams, Link } from "react-router-dom";
 import StudyCard from "./Studycard";
 import StudynotEnough from "./StudyNotEnough";
 
 function Study() {
-  const [deck, setDeck] = useState({});
+  const [deck, setDeck] = useState({cards:[]});
   const [cards, setCards] = useState([]);
   const [flipped, setFlipped] = useState(false);
   const [currentCard, setCurrentCard] = useState(0);
@@ -17,16 +17,16 @@ function Study() {
   useEffect(() => {
     try {
       readDeck(deckId).then(setDeck);
-      loadCards();
+    //   loadCards();
     } catch (e) {
       return e.message;
     }
   }, [deckId]);
 
-  function loadCards() {
-    listCards(deckId).then(setCards); //it took me forever to figure out which call to use!
-  }
-  console.log("length of cards", cards.length); //test
+//   function loadCards() {
+//     listCards(deckId).then(setCards); //it took me forever to figure out which call to use!
+//   }
+ 
 
   const nextCard = () => {
     const deckLength = deck.cards.length;
@@ -54,6 +54,7 @@ function Study() {
     setFlipped(!flipped);
     console.log(flipped);
   }
+ 
   //removed if statement
   return (
     <>
@@ -74,18 +75,18 @@ function Study() {
         </ol>
       </nav>
       <h1> {deck.name}: Study</h1>
-      {cards.length >= 3 ? (
+      {deck.cards.length >= 3 ? (
         <StudyCard
           flipHandler={flipHandler}
           flipped={flipped}
-          deck={deck}
-          cards={cards}
+          cards={deck.cards}
+          
           nextCard={nextCard}
           currentCard={currentCard}
           index={currentCard + 1}
         />
       ) : (
-        <StudynotEnough deck={deck} cards={cards} />
+        <StudynotEnough deck={deck} />
       )}
     </>
   );

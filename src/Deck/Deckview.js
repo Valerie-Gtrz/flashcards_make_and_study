@@ -49,7 +49,7 @@ function DeckView() {
             </nav>
             <div className="media mb-2">
                 <div className="media-body">
-                    <h5 className="mt-0"><h2>{deck.name}</h2></h5>
+                    <div className="mt-0"><h1>{deck.name}</h1></div>
                     {deck.description}
                 </div>
             </div>
