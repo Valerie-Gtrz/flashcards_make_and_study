@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
-import { listCards, readCard, readDeck } from "../../utils/api";
+import { listCards, readDeck, readCard } from "../../utils/api";
 import { useHistory, useParams, Link } from "react-router-dom";
 import StudyCard from "./Studycard";
 
 function Study() {
-  
   const [deck, setDeck] = useState({});
-  const [cards, setCards] = useState({});
+  const [cards, setCards] = useState([]);
   const [flipped, setFlipped] = useState(false);
- 
+  const [currentCard, setCurrentCard] = useState(0);
 
   const history = useHistory();
-  const { cardId, deckId } = useParams(); //something with this
-  
+  const { cardId, deckId } = useParams();
+
+  //
   useEffect(() => {
     try {
       readDeck(deckId).then(setDeck);
@@ -21,21 +21,42 @@ function Study() {
       return e.message;
     }
   }, [deckId]);
-  console.log(deck)//test
 
   function loadCards() {
-    listCards(deckId).then(setCards);
-}
-console.log(cards)//test
+    listCards(deckId).then(setCards); //it took me forever to figure out which call to use!
+  }
+  console.log("length of cards", cards.length); //test
+
+  const nextCard = () => {
+    const deckLength = deck.cards.length;
+    if (currentCard + 2 <= deckLength) {
+      setCurrentCard(currentCard + 1);
+      setFlipped(true);
+    } else {
+      if (
+        window.confirm(
+          "Restart Cards? Click 'cancel' to return to the homepage"
+        )
+      ) {
+        //go back to first card
+        setCurrentCard(0);
+        //make sure front is showing
+        setFlipped(true);
+      } else {
+        //if cancel is pressed go to home
+        history.push("/");
+      }
+    }
+  };
 
   function flipHandler() {
     setFlipped(!flipped);
-    console.log(flipped)
+    console.log(flipped);
   }
-  
+  //removed if statement
   return (
-      <>
-       <nav aria-label="breadcrumb">
+    <>
+      <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
             <Link to="/">
@@ -52,8 +73,18 @@ console.log(cards)//test
         </ol>
       </nav>
       <h1>Study: {deck.name}</h1>
-  <StudyCard flipHandler={flipHandler} flipped={flipped} />
-  </>
+      {cards.length > 0 && (
+        <StudyCard
+          flipHandler={flipHandler}
+          flipped={flipped}
+          deck={deck}
+          cards={cards}
+          nextCard={nextCard}
+          currentCard={currentCard}
+          index={currentCard + 1}
+        />
+      )}
+    </>
   );
 }
 

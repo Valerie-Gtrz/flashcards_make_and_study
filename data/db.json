@@ -25,6 +25,26 @@
       "back": "useHistory()",
       "deckId": 4,
       "id": 8
+    },
+    {
+      "cards": [],
+      "front": "second card",
+      "back": "this is the back",
+      "deckId": 3,
+      "id": 10
+    },
+    {
+      "cards": [],
+      "front": "f",
+      "back": "b",
+      "deckId": 3,
+      "id": 11
+    },
+    {
+      "front": "f",
+      "back": "b",
+      "deckId": 3,
+      "id": 12
     }
   ]
 }

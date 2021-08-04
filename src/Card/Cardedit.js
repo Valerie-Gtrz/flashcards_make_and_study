@@ -3,7 +3,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import { readCard, updateCard, readDeck } from "../utils/api";
 import CardForm from "./CardForm";
 
-function CardEdit({  doneHandler, deckName }) {
+function CardEdit({ deckName }) {
   const history = useHistory();
   const { cardId, deckId} = useParams();
   const [deck, setDeck] = useState({});
@@ -22,7 +22,7 @@ function CardEdit({  doneHandler, deckName }) {
   function submitHandler(updatedCard) {
     updateCard(updatedCard).then(() =>
       history.push(`/decks/${deckId}`)
-    );
+    ); 
   }
 
   const changeHandler = ({ target }) => {
