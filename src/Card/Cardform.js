@@ -6,65 +6,65 @@ function CardForm({
   deckName = "Loading...",
   initialState,
   doneButtonLabel = "Done",
-  saveButtonLabel = "Save"
+  saveButtonLabel = "Save",
 }) {
-    const [card, setCard] = useState(initialState);
-    // changeHandler here 
-    function changeHandler({ target: { name, value } }) {
-        setCard((prevState) => ({
-          ...prevState,
-          [name]: value,
-        }));
-    }
-    function submitHandler(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        onSubmit({ ...card });
-        setCard({ front: "", back: "" })
-    }
+  const [card, setCard] = useState(initialState);
+  // changeHandler here
+  function changeHandler({ target: { name, value } }) {
+    setCard((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  }
+  function submitHandler(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    onSubmit({ ...card });
+    setCard({ front: "", back: "" });
+  }
 
-    return (
-        <form onSubmit={submitHandler} className="card-form">
-            <fieldset>
-            <div className="form-group">
-                <label htmlFor="front">Front</label>
-                <textarea
-                    id="front"
-                    name="front"
-                    tabIndex="1"
-                    className="form-control"
-                    required={true}
-                    placeholder="Front side of card"
-                    value={card.front}
-                    onChange={changeHandler}
-                />
-            </div>
-            <div className="form-group">
-                <label htmlFor="back">Back</label>
-                <textarea
-                    id="back"
-                    name="back"
-                    tabIndex="2"
-                    className="form-control"
-                    required={true}
-                    placeholder="Back side of card"
-                    value={card.back}
-                    onChange={changeHandler}
-                />
-            </div>
-    
-            <button
-                className="btn btn-secondary mr-2"
-                onClick={onDone}
-                tabIndex="4"
-            >
-                {doneButtonLabel}
-            </button>
-            <button type="submit" className="btn btn-primary" tabIndex="3">
-                {saveButtonLabel}
-            </button>
-            </fieldset>
-        </form>
-      );
+  return (
+    <form onSubmit={submitHandler} className="card-form">
+      <fieldset>
+        <div className="form-group">
+          <label htmlFor="front">Front</label>
+          <textarea
+            id="front"
+            name="front"
+            tabIndex="1"
+            className="form-control"
+            required={true}
+            placeholder="Front side of card"
+            value={card.front}
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="back">Back</label>
+          <textarea
+            id="back"
+            name="back"
+            tabIndex="2"
+            className="form-control"
+            required={true}
+            placeholder="Back side of card"
+            value={card.back}
+            onChange={changeHandler}
+          />
+        </div>
+
+        <button
+          className="btn btn-secondary mr-2"
+          onClick={onDone}
+          tabIndex="4"
+        >
+          {doneButtonLabel}
+        </button>
+        <button type="submit" className="btn btn-primary" tabIndex="3">
+          {saveButtonLabel}
+        </button>
+      </fieldset>
+    </form>
+  );
 }
 export default CardForm;

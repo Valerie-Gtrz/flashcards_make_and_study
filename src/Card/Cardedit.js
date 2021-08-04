@@ -5,24 +5,22 @@ import CardForm from "./Cardform";
 
 function CardEdit({ deckName }) {
   const history = useHistory();
-  const { cardId, deckId} = useParams();
+  const { cardId, deckId } = useParams();
   const [deck, setDeck] = useState({});
 
   const [card, setCard] = useState({}); // intial state will be what is currently on the card
-  
+
   useEffect(() => {
-    readCard(cardId).then(setCard)
+    readCard(cardId).then(setCard);
     loadDeck();
   }, [cardId]);
 
   function loadDeck() {
     readDeck(deckId).then(setDeck);
-}
+  }
 
   function submitHandler(updatedCard) {
-    updateCard(updatedCard).then(() =>
-      history.push(`/decks/${deckId}`)
-    ); 
+    updateCard(updatedCard).then(() => history.push(`/decks/${deckId}`));
   }
 
   const changeHandler = ({ target }) => {
@@ -34,7 +32,7 @@ function CardEdit({ deckName }) {
 
   function doneHandler() {
     history.push(`/decks/${deckId}`);
-}
+  }
 
   const child = card.id ? (
     <CardForm

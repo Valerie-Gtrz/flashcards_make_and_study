@@ -5,7 +5,7 @@ import StudyCard from "./Studycard";
 import StudyNotEnough from "./Studynotenough";
 
 function Study() {
-  const [deck, setDeck] = useState({cards:[]});
+  const [deck, setDeck] = useState({ cards: [] });
   const [cards, setCards] = useState([]);
   const [flipped, setFlipped] = useState(false);
   const [currentCard, setCurrentCard] = useState(0);
@@ -17,16 +17,15 @@ function Study() {
   useEffect(() => {
     try {
       readDeck(deckId).then(setDeck);
-    //   loadCards();
+      //   loadCards();
     } catch (e) {
       return e.message;
     }
   }, [deckId]);
 
-//   function loadCards() {
-//     listCards(deckId).then(setCards); //it took me forever to figure out which call to use!
-//   }
- 
+  //   function loadCards() {
+  //     listCards(deckId).then(setCards); //it took me forever to figure out which call to use!
+  //   }
 
   const nextCard = () => {
     const deckLength = deck.cards.length;
@@ -54,7 +53,7 @@ function Study() {
     setFlipped(!flipped);
     console.log(flipped);
   }
- 
+
   //removed if statement
   return (
     <>
@@ -80,7 +79,6 @@ function Study() {
           flipHandler={flipHandler}
           flipped={flipped}
           cards={deck.cards}
-          
           nextCard={nextCard}
           currentCard={currentCard}
           index={currentCard + 1}
