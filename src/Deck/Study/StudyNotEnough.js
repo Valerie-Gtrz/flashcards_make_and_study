@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 
-function StudynotEnough({cards, deck}) {
+function StudyNotEnough({ deck }) {
  
   //need to loop
 
@@ -23,4 +23,4 @@ function StudynotEnough({cards, deck}) {
   );
 }
 
-export default StudynotEnough;
+export default StudyNotEnough;

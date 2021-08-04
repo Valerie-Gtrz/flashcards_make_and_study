@@ -6,7 +6,8 @@ function StudyCard({
   nextCard,
   index,
 }) {
-//   the user should be able to click next regardless of whether they have flipped or not. what if they dont want to study that card right now??
+
+//  User Story: As a frequent user, I would like to be able to click "next" regardless of whether I have clicked "flip" or not. If I don't want to study that card at the time I would like to be able to move on.
     return (
       <div className="card p-3">
         <div>
@@ -38,8 +39,6 @@ function StudyCard({
         </div>
       </div>
     );
- // }
-  return;
 }
 
 export default StudyCard;

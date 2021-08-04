@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { readDeck } from "../../utils/api";
 import { useHistory, useParams, Link } from "react-router-dom";
 import StudyCard from "./Studycard";
-import StudynotEnough from "./StudyNotEnough";
+import StudyNotEnough from "./Studynotenough";
 
 function Study() {
   const [deck, setDeck] = useState({cards:[]});
@@ -86,7 +86,7 @@ function Study() {
           index={currentCard + 1}
         />
       ) : (
-        <StudynotEnough deck={deck} />
+        <StudyNotEnough deck={deck} />
       )}
     </>
   );
