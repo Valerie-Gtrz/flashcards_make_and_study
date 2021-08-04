@@ -1,39 +1,60 @@
- import { useEffect, useState } from 'react'
- import { useHistory, useParams } from 'react-router-dom'
- import { readCard, readDeck } from '../../utils/api';
- import StudyCard from './Studycard'; 
- 
- function Study(){
+import { useState, useEffect } from "react";
+import { listCards, readCard, readDeck } from "../../utils/api";
+import { useHistory, useParams, Link } from "react-router-dom";
+import StudyCard from "./Studycard";
 
-    const history = useHistory();
-    const { cardId, deckId} = useParams();
-    const [deck, setDeck] = useState({});
-    const [card, setCard] = useState({}); 
-    const [flip, setFlip] = useState(false);
-
-
-    useEffect(() => {
-      readCard(cardId).then(setCard)
-      loadDeck();
-    }, [cardId]);
+function Study() {
   
-    function loadDeck() {
+  const [deck, setDeck] = useState({});
+  const [cards, setCards] = useState({});
+  const [flipped, setFlipped] = useState(false);
+ 
+
+  const history = useHistory();
+  const { cardId, deckId } = useParams(); //something with this
+  
+  useEffect(() => {
+    try {
       readDeck(deckId).then(setDeck);
+      loadCards();
+    } catch (e) {
+      return e.message;
+    }
+  }, [deckId]);
+  console.log(deck)//test
+
+  function loadCards() {
+    listCards(deckId).then(setCards);
+}
+console.log(cards)//test
+
+  function flipHandler() {
+    setFlipped(!flipped);
+    console.log(flipped)
   }
+  
+  return (
+      <>
+       <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <Link to="/">
+              <span className="oi oi-home" /> Home
+            </Link>
+          </li>
+          <li className="breadcrumb-item">
+            <Link to={`/decks/${deck.id}`}>{deck.name}</Link>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            <span>Study</span>
+            {cardId}
+          </li>
+        </ol>
+      </nav>
+      <h1>Study: {deck.name}</h1>
+  <StudyCard flipHandler={flipHandler} flipped={flipped} />
+  </>
+  );
+}
 
-//   function flipHandler(){
-//     if(flip)  {
-//         return {card.front}
-//     }
-//     {card.back}
-//   }
-    function doneHandler() {
-      history.push(`/decks/${deckId}`);
-  }
-
-return <StudyCard />
-          
-    
- }
-
- export default Study;
+export default Study;
