@@ -4,18 +4,18 @@ import { deleteCard, deleteDeck, readDeck } from "../utils/api";
 import CardList from "../Card/Cardlist";
 
 function DeckView() {
-  const history = useHistory();
-
   const { deckId } = useParams();
   const [deck, setDeck] = useState({ cards: [] });
+  const history = useHistory();
 
+  //getdeckId and update deck state to become matching deck
   useEffect(loadDeck, [deckId]);
 
   function loadDeck() {
     readDeck(deckId).then(setDeck);
   }
-
-  function handleDelete() {
+  //message for deck deletion
+  function deleteDeckHandler() {
     const confirmed = window.confirm(
       "Delete this deck?\n\nYou will not be able to recover it."
     );
@@ -23,13 +23,12 @@ function DeckView() {
       deleteDeck(deck.id).then(() => history.push("/decks"));
     }
   }
-
+  //message for card deletion
   function deleteCardHandler(cardId) {
     const confirmed = window.confirm(
       "Delete this card?\n\nYou will not be able to recover it."
     );
     if (confirmed) {
-      console.log("deleteCardHandler", confirmed, cardId);
       deleteCard(cardId).then(loadDeck);
     }
   }
@@ -78,10 +77,11 @@ function DeckView() {
         <span className="oi oi-plus" /> Add Cards
       </Link>
       <button className="btn btn-danger float-right" title="Delete deck">
-        <span className="oi oi-trash" onClick={handleDelete} />
+        <span className="oi oi-trash" onClick={deleteDeckHandler} />
       </button>
       <CardList deck={deck} onCardDelete={deleteCardHandler} />
     </main>
   );
 }
+
 export default DeckView;

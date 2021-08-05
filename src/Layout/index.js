@@ -8,13 +8,11 @@ import Header from "./Header";
 
 import DeckEdit from "../Deck/Deckedit";
 import DeckView from "../Deck/Deckview";
-import CardEdit from "../Card/CardEdit"
-import CardCreate from "../Card/CardCreate"
-import DeckCreate from "../Deck/Deckcreate"
-
+import CardEdit from "../Card/Cardedit";
+import CardCreate from "../Card/Cardcreate";
+import DeckCreate from "../Deck/Deckcreate";
 
 function Layout() {
-  
   return (
     <div>
       <Header />
@@ -32,9 +30,9 @@ function Layout() {
           <Route path="/decks/:deckId/cards/new">
             <CardCreate />
           </Route>
-           <Route path="/decks/:deckId/cards/:cardId/edit">
+          <Route path="/decks/:deckId/cards/:cardId/edit">
             <CardEdit />
-          </Route> 
+          </Route>
           <Route exact={true} path="/decks/:deckId">
             <DeckView />
           </Route>
@@ -45,7 +43,7 @@ function Layout() {
             <Home />
           </Route>
           <Route>
-            <NotFound />
+            <NotFound /> {/*NotFound used here*/}
           </Route>
         </Switch>
       </div>

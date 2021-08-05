@@ -6,6 +6,8 @@ function DeckList() {
   const [decks, setDecks] = useState([]);
 
   useEffect(loadDecks, []);
+
+  //message for deleting a deck form the home page
   function deleteHandler(deckId) {
     const confirmed = window.confirm(
       "Delete this deck?\n\nYou will not be able to recover it."
@@ -15,10 +17,12 @@ function DeckList() {
     }
   }
 
+  //get all existing decks and set the decks state to be an array of these decks
   function loadDecks() {
     listDecks().then(setDecks);
   }
 
+  //map through the decks array and return the decks as a list
   const list = decks.map((deck) => (
     <li
       key={deck.id}
@@ -52,6 +56,7 @@ function DeckList() {
       </button>
     </li>
   ));
+  
   return (
     <>
       <Link to="/decks/new" className="btn btn-secondary">
@@ -61,4 +66,5 @@ function DeckList() {
     </>
   );
 }
+
 export default DeckList;

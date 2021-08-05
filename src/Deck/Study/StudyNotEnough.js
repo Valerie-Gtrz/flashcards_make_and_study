@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function StudyNotEnough({ deck }) {
-  //need to loop
+/*This component renders if there are less than 3 cards in a deck
+It is called in Study.js*/
 
-  //if(!{url}){} or something like that =====Display a "Not found" message if the user visits a URL that does not exist.
+function StudyNotEnough({ deck }) {
+  
   return (
     <div className="NotFound">
       <h2>Not enough cards.</h2>

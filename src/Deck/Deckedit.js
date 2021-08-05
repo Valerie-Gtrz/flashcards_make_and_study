@@ -4,23 +4,29 @@ import { readDeck, updateDeck } from "../utils/api";
 import DeckForm from "./Deckform";
 
 function DeckEdit() {
+  const [deck, setDeck] = useState({ name: "", description: "" });
+
   const history = useHistory();
   const { deckId } = useParams();
 
-  const [deck, setDeck] = useState({ name: "", description: "" });
+  //get deck by deck id the set deck state to an object with keys name and description
   useEffect(() => {
     readDeck(deckId).then(setDeck);
   }, [deckId]);
 
+  //updateDecks and on save preroute user to corresponding deck page
   function submitHandler(updatedDeck) {
     updateDeck(updatedDeck).then((savedDeck) =>
       history.push(`/decks/${savedDeck.id}`)
     );
   }
+  //if user clicks cancel reoute to corresponding deck page
   function cancel() {
-    history.goBack();
+    // history.goBack();
+    history.push(`/decks/${deckId}`)
   }
 
+  //id a deck id exists React will render the deck form
   const child = deck.id ? (
     <DeckForm onCancel={cancel} onSubmit={submitHandler} initialState={deck} />
   ) : (

@@ -4,12 +4,13 @@ import { readCard, updateCard, readDeck } from "../utils/api";
 import CardForm from "./Cardform";
 
 function CardEdit({ deckName }) {
-  const history = useHistory();
-  const { cardId, deckId } = useParams();
   const [deck, setDeck] = useState({});
+  const [card, setCard] = useState({});
 
-  const [card, setCard] = useState({}); // intial state will be what is currently on the card
+  const { cardId, deckId } = useParams();
+  const history = useHistory();
 
+  //get the cardId and retrieve the corresponding deck
   useEffect(() => {
     readCard(cardId).then(setCard);
     loadDeck();
@@ -34,6 +35,7 @@ function CardEdit({ deckName }) {
     history.push(`/decks/${deckId}`);
   }
 
+  // if card has an id render the card form
   const child = card.id ? (
     <CardForm
       onChange={changeHandler}

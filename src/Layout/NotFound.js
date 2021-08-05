@@ -1,9 +1,9 @@
 import React from "react";
 
-function NotFound() {
-  //need to loop
+/*this component renders if the user types in a url that 
+does not have a designated path. used in index.js*/
 
-  //if(!{url}){} or something like that =====Display a "Not found" message if the user visits a URL that does not exist.
+function NotFound() {
   return (
     <div className="NotFound">
       <h1>Not Found</h1>

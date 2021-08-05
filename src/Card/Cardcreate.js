@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { createCard, readDeck } from "../utils/api";
-import CardForm from "./CardForm";
+import CardForm from "./Cardform";
 
 function CardCreate() {
+  const [deck, setDeck] = useState({ cards: [] });
+
   const history = useHistory();
   const { deckId } = useParams();
-  const [deck, setDeck] = useState({ cards: [] });
+
+//retrieve the deck using the deckId param then set deck state to that deck and destructure cards as an array
   useEffect(() => {
     readDeck(deckId).then(setDeck);
   }, [deckId]);
 
+  //when user presses submit create new card with new id and add it to the current deck
   function submitHandler(card) {
     createCard(deckId, card);
   }
+
+  //push user to deck page when they press done
   function doneHandler() {
     history.push(`/decks/${deckId}`);
   }

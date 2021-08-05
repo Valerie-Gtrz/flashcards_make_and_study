@@ -6,7 +6,7 @@ import StudyNotEnough from "./Studynotenough";
 
 function Study() {
   const [deck, setDeck] = useState({ cards: [] });
-  const [cards, setCards] = useState([]);
+
   const [flipped, setFlipped] = useState(false);
   const [currentCard, setCurrentCard] = useState(0);
 
@@ -17,16 +17,12 @@ function Study() {
   useEffect(() => {
     try {
       readDeck(deckId).then(setDeck);
-      //   loadCards();
     } catch (e) {
       return e.message;
     }
   }, [deckId]);
 
-  //   function loadCards() {
-  //     listCards(deckId).then(setCards); //it took me forever to figure out which call to use!
-  //   }
-
+  //function to render the next card in the cards array when user presses the next btn
   const nextCard = () => {
     const deckLength = deck.cards.length;
     if (currentCard + 2 <= deckLength) {
@@ -51,10 +47,9 @@ function Study() {
 
   function flipHandler() {
     setFlipped(!flipped);
-    console.log(flipped);
   }
 
-  //removed if statement
+  //removed if statement here and added conditional further down in JSX render
   return (
     <>
       <nav aria-label="breadcrumb">
@@ -73,7 +68,7 @@ function Study() {
           </li>
         </ol>
       </nav>
-      <h1> {deck.name}: Study</h1>
+      <h1> Study: {deck.name}</h1>
       {deck.cards.length >= 3 ? (
         <StudyCard
           flipHandler={flipHandler}

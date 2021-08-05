@@ -1,21 +1,26 @@
 import React, { useState } from "react";
 
+//this is the form card used in Cardedit and Cardcreate
+
 function CardForm({
   onSubmit,
   onDone,
-  deckName = "Loading...",
   initialState,
   doneButtonLabel = "Done",
   saveButtonLabel = "Save",
 }) {
   const [card, setCard] = useState(initialState);
-  // changeHandler here
+
+  // changeHandler on change set card state to the previous state plus set obj property name as a key and value as the value
   function changeHandler({ target: { name, value } }) {
     setCard((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   }
+
+  /*when editing or creating a card, when user presses submit or save 
+  set card values of front and back to empty strings*/
   function submitHandler(event) {
     event.preventDefault();
     event.stopPropagation();
