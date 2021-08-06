@@ -6,7 +6,7 @@
       "id": 4
     },
     {
-      "name": "Hey, I made a new deck!",
+      "name": "React Basics",
       "description": "This is a sample deck.",
       "id": 5
     }
@@ -14,24 +14,59 @@
   "cards": [
     {
       "cards": [],
-      "front": "What is the name of the hook used to re-route a user?",
-      "back": "useHistory()",
+      "front": "Are state updates asynchronous?",
+      "back": "You should assume yes. React may batch multiple setState() calls into a single update for performance.",
       "deckId": 4,
-      "id": 8
+      "id": 11
+    },
+    {
+      "front": "True/False: When you call setState(), React merges the object you provide into the current state.",
+      "back": "True. For example, your state may contain several independent variables:\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      posts: [],\n      comments: []\n    };\n  }\nThen you can update them independently with separate setState() calls:\n\n  componentDidMount() {\n    fetchPosts().then(response => {\n      this.setState({\n        posts: response.posts\n      });\n    });\n\n    fetchComments().then(response => {\n      this.setState({\n        comments: response.comments\n      });\n    });\n  }\nThe merging is shallow, so this.setState({comments}) leaves this.state.posts intact, but completely replaces this.state.comments.",
+      "deckId": 4,
+      "id": 12
     },
     {
       "cards": [],
-      "front": "Which Hook does React use to preserve states between re-renders?",
-      "back": "useState()",
-      "deckId": 4,
-      "id": 9
+      "front": "What are components?",
+      "back": "Self-contained, concern-specific building blocks that are easy to reuse, extend and maintain.",
+      "deckId": 5,
+      "id": 13
     },
     {
-      "cards": [],
-      "front": "Which Hook is used to reroute a user after an action?",
-      "back": "useHistory()",
-      "deckId": 4,
-      "id": 10
+      "front": "Give 3 reasons why JSX is great for describing user interfaces?",
+      "back": "1) it’s declarative\n\n2) it’s easy to spot the relationship between elements\n\n3) it’s easy to visualize the overall structure of your UI.",
+      "deckId": 5,
+      "id": 14
+    },
+    {
+      "front": "What is React's approach to reactive UI rendering?",
+      "back": "You declare how state is represented as visual elements of the DOM. From then on, React automatically updates the DOM to reflect state changes.",
+      "deckId": 5,
+      "id": 15
+    },
+    {
+      "front": "For performance reasons it's not viable to trash and re-render the entire interface every time state changes. What's React's solution to this?",
+      "back": "The 'virtual DOM' - an in-memory, lightweight representation of the DOM",
+      "deckId": 5,
+      "id": 16
+    },
+    {
+      "front": "What are two typical things that might change the state of an application?",
+      "back": "User interaction and data fetching",
+      "deckId": 5,
+      "id": 17
+    },
+    {
+      "front": "How does React use the virtual DOM?",
+      "back": "It quickly compares the current state of the UI with the desired state.\nIt then computes the minimal set of real DOM mutations to achieve the change.",
+      "deckId": 5,
+      "id": 18
+    },
+    {
+      "front": "What is the 'end benefit' of React's virtual DOM?",
+      "back": "\nIt makes React very fast and efficient.\nReact apps can easily run at 60 fps, even on mobile devices",
+      "deckId": 5,
+      "id": 19
     }
   ]
 }
