@@ -21,7 +21,7 @@
 ### Edit Deck | Edit the deck name and/or description.
 <img src= "https://64.media.tumblr.com/abce5d856ffe017d1a7a50ce07192dde/0e559f53e35b074e-96/s640x960/638414798a7a5f693b95234fac1ceecb579be302.png" width="400">
 
-### Study | Move through your flashcards to start a study session. You can view the back of the card by pressing the flip button.
+### Study | Move through your flashcards. You can view the back of the card by pressing the flip button.
 <img src= "https://64.media.tumblr.com/b6121b9ec23db728c745c56a2905315a/fd4ddeaa61380add-0c/s640x960/dfee2e77c056396234bc1a44c4c2ee3ce1c89d66.png" width="400">
 
 ### Add Card | Add new cards to the current deck and set the text for the front and the back of the card.
