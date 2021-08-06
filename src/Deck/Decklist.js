@@ -7,7 +7,7 @@ function DeckList() {
 
   useEffect(loadDecks, []);
 
-  //message for deleting a deck form the home page
+  //message for deleting a deck from the home page
   function deleteHandler(deckId) {
     const confirmed = window.confirm(
       "Delete this deck?\n\nYou will not be able to recover it."

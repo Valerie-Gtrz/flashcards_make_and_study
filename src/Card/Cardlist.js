@@ -5,7 +5,7 @@ function CardList({ deck, onCardDelete }) {
   //deconstruct cards array from deck prop state
   const { cards = [] } = deck;
 
-  //map over cards array and return them as a list non the deck page
+  //map over cards array and return them as a list on the deck page
   const list = cards.map((card) => (
     <li
       key={card.id}

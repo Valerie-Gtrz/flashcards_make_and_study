@@ -9,7 +9,7 @@ function CardCreate() {
   const history = useHistory();
   const { deckId } = useParams();
 
-//retrieve the deck using the deckId param then set deck state to that deck and destructure cards as an array
+  //retrieve the deck using the deckId param then set deck state to matching deck's "cards" property array
   useEffect(() => {
     readDeck(deckId).then(setDeck);
   }, [deckId]);
