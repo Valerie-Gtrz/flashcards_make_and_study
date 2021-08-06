@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-//this is the form card used in Cardedit and Cardcreate
+/*this is the form card to be shared by Cardedit and Cardcreate*/
 
 function CardForm({
   onSubmit,
@@ -11,7 +11,8 @@ function CardForm({
 }) {
   const [card, setCard] = useState(initialState);
 
-  // changeHandler on change set card state to the previous state plus set obj property name as a key and value as the value
+  /* changeHandler on change set card state to the previous state 
+  plus set obj property name as a key and value as the value */
   function changeHandler({ target: { name, value } }) {
     setCard((prevState) => ({
       ...prevState,
@@ -19,8 +20,8 @@ function CardForm({
     }));
   }
 
-  /*when editing or creating a card, when user presses submit or save 
-  set card values of front and back to empty strings*/
+  /*when editing or creating a card, on 'submit' or 'save' 
+  show a new empty card with front and back values to empty strings*/
   function submitHandler(event) {
     event.preventDefault();
     event.stopPropagation();

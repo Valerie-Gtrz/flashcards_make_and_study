@@ -18,7 +18,7 @@ function StudyCard({
         <h3 className="card-title">
           Card {index} of {cards.length}
         </h3>
-        {/*if flip button is unclicked, show card front text, if it is clicked show card back*/}
+        {/*if 'flip' is unclicked, show card front text, if it is clicked show card back*/}
         <p className="card-text mb-3">
           {!flipped ? cards[currentCard].front : cards[currentCard].back}
         </p>
@@ -31,7 +31,7 @@ function StudyCard({
         >
           Flip
         </button>
-        {/*if user clicks flip, render the next button*/}
+        {/*if user clicks 'flip', render the next button*/}
         {flipped && (
           <button
             type="submit"

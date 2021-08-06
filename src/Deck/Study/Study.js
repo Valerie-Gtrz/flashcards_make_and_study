@@ -22,7 +22,7 @@ function Study() {
     }
   }, [deckId]);
 
-  //function to render the next card in the cards array when user presses the next btn
+  //function to render the next card in the cards array when user presses the 'next' btn
   const nextCard = () => {
     const deckLength = deck.cards.length;
     if (currentCard + 2 <= deckLength) {
@@ -34,7 +34,7 @@ function Study() {
           "Restart Cards? Click 'cancel' to return to the homepage"
         )
       ) {
-        //go back to first card
+        //when user reaches the last card and presses 'ok' go back to first card 
         setCurrentCard(0);
         //make sure front is showing
         setFlipped(false);

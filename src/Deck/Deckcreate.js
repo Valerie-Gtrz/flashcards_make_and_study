@@ -6,14 +6,14 @@ import DeckForm from "./Deckform";
 function DeckCreate() {
   const history = useHistory();
 
-  //on submit create a new id for a deck and reroute user to new deck page
+  //on 'submit' create a new id for a deck and reroute user to new deck page
   function submitHandler(deck) {
     createDeck(deck).then((savedDeck) =>
       history.push(`/decks/${savedDeck.id}`)
     );
   }
 
-//on cancel go back
+  //on 'cancel' go back to previous page
   function cancel() {
     history.goBack();
   }

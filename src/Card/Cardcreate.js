@@ -14,12 +14,12 @@ function CardCreate() {
     readDeck(deckId).then(setDeck);
   }, [deckId]);
 
-  //when user presses submit create new card with new id and add it to the current deck
+  //on 'submit' create new card with new id and add it to the current deck
   function submitHandler(card) {
     createCard(deckId, card);
   }
 
-  //push user to deck page when they press done
+  //push user to deck page when on 'done'
   function doneHandler() {
     history.push(`/decks/${deckId}`);
   }

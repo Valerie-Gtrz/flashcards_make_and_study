@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-//this is the form to be shared by deck edit and create
+/*this is the form to be shared by deck edit and create*/
 
 function DeckForm({
   onSubmit,

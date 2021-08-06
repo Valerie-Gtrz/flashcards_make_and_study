@@ -14,19 +14,19 @@ function DeckEdit() {
     readDeck(deckId).then(setDeck);
   }, [deckId]);
 
-  //updateDecks and on save preroute user to corresponding deck page
+  //updateDecks and on 'save' reroute user to corresponding deck page
   function submitHandler(updatedDeck) {
     updateDeck(updatedDeck).then((savedDeck) =>
       history.push(`/decks/${savedDeck.id}`)
     );
   }
-  //if user clicks cancel reoute to corresponding deck page
+  //if user clicks 'cancel' reoute to corresponding deck page
   function cancel() {
     // history.goBack();
     history.push(`/decks/${deckId}`)
   }
 
-  //id a deck id exists React will render the deck form
+  //if a deck id exists React will render the deck form
   const child = deck.id ? (
     <DeckForm onCancel={cancel} onSubmit={submitHandler} initialState={deck} />
   ) : (
